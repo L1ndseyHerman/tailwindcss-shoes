@@ -13,3 +13,45 @@
     @apply flex items-center justify-center;
   }
 }
+
+/* Animations: */
+/* So none of these animations work even tho he said to write the code like this.
+   I was googling why, and it looks like this is Tailwind 4 syntax,
+   but this project is using Tailwind 3.3.3. Looks like animations need to go in the 
+   tailwind.config.js to work in this version. */
+
+@scope {
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  @keyframes wiggle {
+    0% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+    100% {
+      transform: rotate(-3deg);
+    }
+  }
+
+  --animate-float: float 4s ease-in-out infinite;
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  --animate-fadeIn: fadeIn 3s ease-in-out;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
