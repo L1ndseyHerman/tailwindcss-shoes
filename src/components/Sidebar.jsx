@@ -2,7 +2,7 @@ export function Sidebar({ children, isOpen, onClickClose }) {
   return (
     <div>
       <div
-        className={`shadow-lgtransform fixed right-0 top-0 z-50 h-full w-full bg-white p-5 transition duration-300 md:w-[50%] lg:w-[35%] ${
+        className={`shadow-lgtransform fixed right-0 top-0 z-50 h-full w-full overflow-y-auto bg-white p-5 transition duration-300 md:w-[50%] lg:w-[35%] ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
