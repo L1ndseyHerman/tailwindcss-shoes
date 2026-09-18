@@ -18,9 +18,16 @@
 /* So none of these animations work even tho he said to write the code like this.
    I was googling why, and it looks like this is Tailwind 4 syntax,
    but this project is using Tailwind 3.3.3. Looks like animations need to go in the 
-   tailwind.config.js to work in this version. */
+   tailwind.config.js to work in this version.
+   
+   UPDATE: Same goes for these colors for the darkmode/lightmode button :(
+*/
 
-@scope {
+@theme {
+  --color-night: #0d1120;
+  --color-night-50: #171e2c;
+  --color-night-500: #0d1120;
+
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   @keyframes wiggle {
     0% {
