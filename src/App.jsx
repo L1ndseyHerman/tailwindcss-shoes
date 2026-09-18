@@ -29,6 +29,18 @@ export function App() {
     );
   };
 
+  const removeFromCart = (productId) => {
+    const updatedCartItems = [...cartItems];
+
+    const existingItemIndex = cartItems.findIndex(
+      (item) => item.product.id === productId,
+    );
+
+    updatedCartItems.splice(existingItemIndex, 1);
+
+    setCartItems(updatedCartItems);
+  };
+
   const addToCart = (product, qty, size) => {
     if (qty && size) {
       const updatedCartItems = [...cartItems];
@@ -64,7 +76,10 @@ export function App() {
         isOpen={isSidebarOpen}
         onClickClose={() => setIsSidebarOpen(false)}
       >
-        <Cart cartItems={cartItems} />
+        <Cart
+          cartItems={cartItems}
+          onClickTrash={removeFromCart}
+        />
       </Sidebar>
       <div className="fixed bottom-4 right-4">
         {/* The bg-night-50 from index.css doesn't work, so I'm hardcoding it: */}
