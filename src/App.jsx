@@ -7,16 +7,9 @@ import { useState, useEffect } from "react";
 import { Cart } from "./components/Cart";
 import { BiSun, BiMoon } from "react-icons/bi";
 
-const FAKE_CART_ITEMS = SHOE_LIST.map((shoe) => {
-  return {
-    product: shoe,
-    qty: 1,
-    size: 44,
-  };
-});
-
 export function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [currentShoe, setCurrentShoe] = useState(SHOE_LIST[0]);
 
   useEffect(() => {
     const isDarkMode = localStorage.getItem("isDarkMode");
@@ -38,13 +31,16 @@ export function App() {
   return (
     <div className="animate-fadeIn p-10 dark:bg-[#0d1120] xl:px-24">
       <Nav onClickShoppingBtn={() => setIsSidebarOpen(true)} />
-      <ShoeDetail />
-      <NewArrivalsSection items={SHOE_LIST} />
+      <ShoeDetail shoe={currentShoe} />
+      <NewArrivalsSection
+        items={SHOE_LIST}
+        onClickCard={setCurrentShoe}
+      />
       <Sidebar
         isOpen={isSidebarOpen}
         onClickClose={() => setIsSidebarOpen(false)}
       >
-        <Cart cartItems={FAKE_CART_ITEMS} />
+        <Cart cartItems={[]} />
       </Sidebar>
       <div className="fixed bottom-4 right-4">
         {/* The bg-night-50 from index.css doesn't work, so I'm hardcoding it: */}
